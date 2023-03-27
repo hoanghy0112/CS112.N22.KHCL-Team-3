@@ -1,4 +1,4 @@
-def isLeafYear(year: int) -> bool:
+def isLeapYear(year: int) -> bool:
     if year % 400 == 0:
         return True
     elif year % 100 == 0:
@@ -13,7 +13,7 @@ def getMonthLength(month: int, year: int) -> int:
     if month in (1, 3, 5, 7, 8, 10, 12):
         return 31
     elif month == 2:
-        if isLeafYear(year):
+        if isLeapYear(year):
             return 29
         else:
             return 28
@@ -46,14 +46,14 @@ def findNextDate(day: int, month: int, year: int) -> tuple:
     return (day, month, year)
 
 
-if __name__ == "__main__":
-    year = int(input("Input a year: "))
-    month = int(input("Input a month [1-12]: "))
-    day = int(input("Input a day [1-31]: "))
+# if __name__ == "__main__":
+#     year = int(input("Input a year: "))
+#     month = int(input("Input a month [1-12]: "))
+#     day = int(input("Input a day [1-31]: "))
 
-    if not isValidDate(day, month, year):
-        print("The date %d-%d-%d is invalid." % (day, month, year))
-    else:
-        print(
-            "The next date is [dd-mm-yyyy] %d-%d-%d." % findNextDate(day, month, year)
-        )
+#     if not isValidDate(day, month, year):
+#         print("The date %d-%d-%d is invalid." % (day, month, year))
+#     else:
+#         print(
+#             "The next date is [dd-mm-yyyy] %d-%d-%d." % findNextDate(day, month, year)
+#         )
