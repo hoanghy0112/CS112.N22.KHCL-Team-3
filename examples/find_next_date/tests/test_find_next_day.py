@@ -21,7 +21,6 @@ def test_is_leap_year(year, output):
     assert isLeapYear(year) == output
 
 
-@pytest.mark.usefixtures("mockIsLeapYear")
 @pytest.mark.parametrize(
     "month, year, isLeapYear, monthLength",
     [
@@ -31,15 +30,16 @@ def test_is_leap_year(year, output):
         (4, 2023, False, 30),
     ],
 )
+@pytest.mark.usefixtures("mockIsLeapYear")
 def test_get_month_length(month, year, isLeapYear, monthLength):
     assert getMonthLength(month, year) == monthLength
 
 
-@pytest.mark.usefixtures('mockGetMonthLength')
 @pytest.mark.parametrize(
     "day, month, year, monthLength, isValid",
     [(1, 2, 2023, 28, True), (30, 2, 2024, 29, False), (20, 0, 2023, 0, False)],
 )
+@pytest.mark.usefixtures("mockGetMonthLength")
 def test_is_valid_date(day, month, year, monthLength, isValid):
     assert isValidDate(day, month, year) == isValid
 
@@ -53,7 +53,7 @@ def test_is_valid_date(day, month, year, monthLength, isValid):
     ],
 )
 def test_find_next_day(input, output):
-    with patch('src.findNextDate.isValidDate', return_value=True):
+    with patch("src.findNextDate.isValidDate", return_value=True):
         assert findNextDate(*input) == output
 
 
@@ -67,5 +67,5 @@ def test_find_next_day(input, output):
 )
 def test_find_next_day_with_invalid_date(day, month, year):
     with pytest.raises(ValueError):
-        with patch('src.findNextDate.isValidDate', return_value=False):
+        with patch("src.findNextDate.isValidDate", return_value=False):
             findNextDate(day, month, year)
