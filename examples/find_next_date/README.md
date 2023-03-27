@@ -11,5 +11,5 @@ pip install -r requirements.txt
 
 ### Run test 
 ```
-python -m pytest --cov=src/ tests/ --cov-report html
+python -m pytest --cov=src/ tests/ --cov-branch --cov-report html
 ```
