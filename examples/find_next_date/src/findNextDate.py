@@ -1,12 +1,18 @@
-def isLeapYear(year: int) -> bool:
-    if year % 400 == 0:
-        return True
-    elif year % 100 == 0:
-        return False
-    elif year % 4 == 0:
-        return True
+def findNextDate(day: int, month: int, year: int) -> tuple:
+    if not isValidDate(day, month, year):
+        raise ValueError(f"{day}/{month}/{year} is not a valid date")
+
+    if day < getMonthLength(month, year):
+        day += 1
     else:
-        return False
+        day = 1
+        if month == 12:
+            month = 1
+            year += 1
+        else:
+            month += 1
+
+    return (day, month, year)
 
 
 def getMonthLength(month: int, year: int) -> int:
@@ -29,18 +35,12 @@ def isValidDate(day: int, month: int, year: int) -> bool:
     return True
 
 
-def findNextDate(day: int, month: int, year: int) -> tuple:
-    if not isValidDate(day, month, year):
-        raise ValueError(f"{day}/{month}/{year} is not a valid date")
-
-    if day < getMonthLength(month, year):
-        day += 1
+def isLeapYear(year: int) -> bool:
+    if year % 400 == 0:
+        return True
+    elif year % 100 == 0:
+        return False
+    elif year % 4 == 0:
+        return True
     else:
-        day = 1
-        if month == 12:
-            month = 1
-            year += 1
-        else:
-            month += 1
-
-    return (day, month, year)
+        return False
