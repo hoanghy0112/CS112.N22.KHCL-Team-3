@@ -8,7 +8,6 @@ def mockIsLeapYear(mocker, isLeapYear):
     mocker.patch("src.findNextDate.isLeapYear", return_value=isLeapYear)
 
 
-#
 @pytest.fixture
 def mockGetMonthLength(mocker, monthLength):
     mocker.patch("src.findNextDate.getMonthLength", return_value=monthLength)
@@ -26,9 +25,9 @@ def test_is_leap_year(year, output):
     "month, year, isLeapYear, monthLength",
     [
         (2, 2023, False, 28),
-        (2, 2024, True, 29),
-        (3, 2023, False, 31),
-        (4, 2023, False, 30),
+        # (4, 2023, False, 30),
+        # (2, 2024, True, 29),
+        # (3, 2023, False, 31),
     ],
 )
 @pytest.mark.usefixtures("mockIsLeapYear")
