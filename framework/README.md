@@ -1,4 +1,4 @@
-# Find next day example
+# Framework for testing
 
 ## Overview
 
@@ -6,8 +6,6 @@
 ```
 pip install -r requirements.txt
 ```
-
-## Guide
 
 ### Run test 
 ```
